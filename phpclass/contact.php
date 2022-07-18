@@ -7,7 +7,6 @@ class contact
 
     function __construct()
     {
-
     }
 
     function getConnection()
@@ -18,12 +17,9 @@ class contact
 
         return $conn;
     }
-
     function insertdata()
     {
-
         $con = $this->getConnection();
-
         $emri = $_POST['name'];
         $email = $_POST['email'];
         $subject = $_POST['subject'];
@@ -34,13 +30,9 @@ class contact
         if ($con->query($sql) === TRUE) {
             header("Location: ../index.php");
         } else {
-
-
         }
         $con->close();
     }
-
 }
-
 $obj = new contact();
 $obj->insertdata();

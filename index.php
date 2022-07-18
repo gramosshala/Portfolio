@@ -27,7 +27,7 @@
         <div class="row">
             <div class="col-twelve">
                 <h5>Hello, World.</h5>
-                <?php include 'phpclass/Databases.php' ?>;
+                <?php include 'phpclass/Databases.php' ?>
                 <?php
                 $objectDB = new Databases();
                 $conn = $objectDB->getConnection();
@@ -44,62 +44,44 @@
                 </p>
                 <a class="button stroke smoothscroll" href="#about" title="">More About Me</a>
             </div>
-
         </div>
     </div>
-
     <ul class="intro-social">
-        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-        <li><a href="https://www.instagram.com/gramosshala"><i class="fa fa-instagram"></i></a></li>
         <li><a href="https://github.com/gramosshala"><i class="fa fa-github"></i></a></li>
+        <li><a href="https://www.linkedin.com/in/gramosshala"><i class="fa fa-linkedin"></i></a></li>
+        <li><a href="https://www.facebook.com/gramossshala/"><i class="fa fa-facebook"></i></a></li>
+        <li><a href="mailto: gramos_shala@live.com"><i class="fa fa-mail-forward"></i></a></li>
     </ul>
 </section>
-
-<section id="about">
-
-    <div class="row section-intro">
-        <div class="col-twelve">
-
-            <h5>About</h5>
-            <h1>Let me introduce myself.</h1>
-
-            <div class="intro-info">
-                <img src="images/profile-pic.jpg" alt="Profile Picture">
-                <p class="lead">///////////////////////.</p>
+    <section id="about">
+        <div class="row section-intro">
+            <div class="col-twelve">
+                <h5>About</h5>
+                <h1>Let me introduce myself.</h1>
+                <div class="intro-info">
+                    <img src="images/profile-pic.jpg" alt="Profile Picture">
+                    <p class="lead"><?php echo $row1['about'] ?></p>
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class="row about-content">
-
-        <?php
-
-
-        ?>
-
-        <div class="col-six tab-full">
-
-            <h3>Profile</h3>
-            <p>L///.</p>
-
-            <ul class="info-list">
-                <li>
-                    <strong>Fullname:</strong>
-                    <span><?php echo $row1['firstname'] . " " . $row1['lastname'] ?></span>
-                </li>
-                <li>
-                    <strong>BIRTH DATE:</strong>
-                    <span><?php echo date('d-m-Y', strtotime($row1['birthday'])) ?></span>
-                </li>
-                <li>
-                    <strong>EMAIL:</strong>
-                    <span><?php echo $row1['email'] ?></span>
-                </li>
-            </ul>
+        <div class="row about-content">
+            <div class="col-six tab-full">
+                <h3>Profile</h3>
+                <ul class="info-list">
+                    <li>
+                        <strong>Fullname:</strong>
+                        <span><?php echo $row1['firstname'] . " " . $row1['lastname'] ?></span>
+                    </li>
+                    <li>
+                        <strong>BIRTH DATE:</strong>
+                        <span><?php echo date('d-m-Y', strtotime($row1['birthday'])) ?></span>
+                    </li>
+                    <li>
+                        <strong>EMAIL:</strong>
+                        <span><?php echo $row1['email'] ?></span>
+                    </li>
+                </ul>
         </div>
-
         <div class="col-six tab-full">
             <?php
             $sql1 = "SELECT * FROM skills";
@@ -107,7 +89,6 @@
             if ($result->num_rows > 0){
             ?>
             <h3>Skills</h3>
-            <p>//////////</p>
             <ul class="skill-bars">
                 <?php
                 while ($row = $result->fetch_assoc()) {
@@ -121,7 +102,6 @@
                 }
                 } ?>
             </ul>
-
         </div>
     </div>
     <div class="row button-section">
@@ -131,7 +111,6 @@
         </div>
     </div>
 </section>
-
     <section id="resume" class="grey-section">
         <div class="row section-intro">
             <div class="col-twelve">
@@ -144,14 +123,15 @@
             <div class="col-twelve resume-header">
                 <h2>Education</h2>
             </div>
-            <?php
-            $sql3 = "SELECT * FROM education";
-            $result2 = $conn->query($sql3);
-            if ($result2->num_rows > 0){
-            while ($row2 = $result2->fetch_assoc()){
 
-            ?>
             <div class="col-twelve">
+                <?php
+                $sql3 = "SELECT * FROM education";
+                $result2 = $conn->query($sql3);
+                if ($result2->num_rows > 0){
+                while ($row2 = $result2->fetch_assoc()){
+
+                ?>
                 <div class="timeline-wrap">
                     <div class="timeline-block">
                         <div class="timeline-ico">
@@ -170,23 +150,23 @@
                     </div>
                 </div
             </div>
+            <?php }
+            } ?>
         </div>
-        <?php }
-        } ?>
+
 
         <div class="row resume-timeline">
             <div class="col-twelve resume-header">
                 <h2>Repository</h2>
             </div>
+            <div class="col-twelve">
+                <?php
+                $sql4 = "SELECT * FROM repository ORDER BY started DESC";
+                $result3 = $conn->query($sql4);
+                if ($result3->num_rows > 0) {
+                    while ($row3 = $result3->fetch_assoc()) {
 
-            <?php
-            $sql4 = "SELECT * FROM repository";
-            $result3 = $conn->query($sql4);
-            if ($result3->num_rows > 0) {
-                while ($row3 = $result3->fetch_assoc()) {
-
-                    ?>
-                    <div class="col-twelve">
+                        ?>
                         <div class="timeline-wrap">
                             <div class="timeline-block">
                                 <div class="timeline-ico">
@@ -202,14 +182,12 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                <?php }
-            } ?>
+                    <?php }
+                } ?>
+            </div>
         </div>
     </section>
-
 <section id="contact">
-
     <div class="row section-intro">
         <div class="col-twelve">
             <h5>Contact</h5>
@@ -221,7 +199,6 @@
             <!-- form -->
             <form action="phpclass/contact.php" name="contactForm" id="contactForm" method="post">
                 <fieldset>
-
                     <div class="form-field">
                         <input name="name" type="text" id="contactName" placeholder="Name" value="" minlength="2"
                                required="">
@@ -257,8 +234,6 @@
             </div>
         </div>
     </div> <!-- /contact-form -->
-
-
     <div class="row contact-info">
 
         <div class="col-four tab-full">
@@ -291,9 +266,8 @@
 
     </div>
     <?php }
-    } ?><!-- /contact-info -->
-</section> <!-- /contact -->
-
+    } ?>
+</section>
 
 <!-- footer
 ================================================== -->
