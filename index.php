@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- CSS    ===================================================== -->
+
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/vendor.css">
@@ -16,7 +17,6 @@
     <script src="js/pace.min.js"></script>
 
 </head>
-
 <body id="top">
 
 <?php include 'includes/header.php'; ?>
@@ -27,13 +27,24 @@
         <div class="row">
             <div class="col-twelve">
                 <h5>Hello, World.</h5>
-                <h1>I'm <?php echo 'Gramos Shala' ?>>.</h1>
+                <?php include 'phpclass/Databases.php' ?>;
+                <?php
+                $objectDB = new Databases();
+                $conn = $objectDB->getConnection();
+                $sql = "SELECT * FROM user";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0){
+                while ($row = $result->fetch_assoc()){
+
+                ?>
+                <h1>I'm <?php echo $row['firstname'] . " " . $row['lastname'] ?></h1>
                 <p class="intro-position">
                     <span><?php echo 'Back-end Developer' ?> </span>
                     <span><?php echo 'PHP-LARAVEL ' ?> </span>
                 </p>
                 <a class="button stroke smoothscroll" href="#about" title="">More About Me</a>
             </div>
+
         </div>
     </div>
 
@@ -71,22 +82,40 @@
             <ul class="info-list">
                 <li>
                     <strong>Fullname:</strong>
-                    <span>///////////</span>
+                    <span><?php echo $row['firstname'] . " " . $row['lastname'] ?></span>
                 </li>
             </ul>
         </div>
 
+        <?php }
+        } ?>
         <div class="col-six tab-full">
+            <?php
+
+            $sql1 = "SELECT * FROM skills";
+            $result = $conn->query($sql1);
+            if ($result->num_rows > 0){
+
+            ?>
             <h3>Skills</h3>
             <p>//////////</p>
 
             <ul class="skill-bars">
-                <li>
-                    <?php $d = 30; ?>
-                    <div class="progress percent<?php echo $d ?> >"><span><?php echo $d ?>%</span></div>
-                    <strong>PHP</strong>
-                </li>
+                <?php
+
+                while ($row = $result->fetch_assoc()) {
+
+
+                    ?>
+                    <li>
+                        <div class="progress percent<?php echo $row['percentage'] ?> >">
+                            <span><?php echo $row['percentage'] ?>%</span></div>
+                        <strong><?php echo $row['name'] ?></strong>
+                    </li>
+                <?php }
+                } ?>
             </ul>
+
         </div>
     </div>
     <div class="row button-section">
