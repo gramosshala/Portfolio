@@ -3,7 +3,7 @@
 
 ![Screenshot 2022-07-18 204556](https://user-images.githubusercontent.com/77172595/179581191-3460a641-1217-4a78-96cc-b8f1f9364f3e.png)
 
-![Screenshot 2022-07-18 204014](https://user-images.githubusercontent.com/77172595/179580505-eb3f4738-ef71-457d-aa07-7aa3ed932105.png)
+![Screenshot 2022-07-18 205716](https://user-images.githubusercontent.com/77172595/179583479-fe0c2cd0-f36a-4596-8406-4c7ae0fd828b.png)
 
 ![Screenshot 2022-07-18 204659](https://user-images.githubusercontent.com/77172595/179581351-082a34f4-e9b1-47b8-9a61-88409a31b2a8.png)
 
